@@ -4,14 +4,14 @@ import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 const TEMPERATURE_RANGE = Object.freeze({
-  Min: 5,
-  Max: 40,
+  Min: -50,
+  Max: 200,
 });
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExternalTemperatureProviderService {
+export class BeerContainerTemperatureService {
   private readonly random: Random;
   private readonly $current: Observable<number>;
   private currentTemperature: number;
@@ -25,7 +25,6 @@ export class ExternalTemperatureProviderService {
         map((value: any) => {
           const currentTemperature = this.fetchCurrentTemperature(this.currentTemperature);
           this.updateCurrentTemperature(currentTemperature);
-          console.debug('ExternalTemperatureProviderService:currentTemperature()', currentTemperature);
           return currentTemperature;
         }));
   }
@@ -34,9 +33,9 @@ export class ExternalTemperatureProviderService {
     return this.$current;
   }
 
-  private fetchCurrentTemperature(currentTemperature: number = 25): number {
-    const minTemperature = TEMPERATURE_RANGE.Min < currentTemperature ? (currentTemperature - 5) : TEMPERATURE_RANGE.Min;
-    const maxTemperature = TEMPERATURE_RANGE.Max > currentTemperature ? (currentTemperature + 5) : TEMPERATURE_RANGE.Max;
+  private fetchCurrentTemperature(currentTemperature: number = 15): number {
+    const minTemperature = TEMPERATURE_RANGE.Min < currentTemperature ? (currentTemperature - 30) : TEMPERATURE_RANGE.Min;
+    const maxTemperature = TEMPERATURE_RANGE.Max > currentTemperature ? (currentTemperature + 30) : TEMPERATURE_RANGE.Max;
     return this.random.real(minTemperature, maxTemperature);
   }
 

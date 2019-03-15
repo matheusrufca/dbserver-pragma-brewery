@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ExternalTemperatureProviderService } from '../services/temperature-provider/external-temperature-provider.service';
+import { ExternalTemperatureProviderService } from 'src/app/services/termometer/external-temperature-provider.service';
+import { BeerContainer } from '../beer-container/beer-container.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,4 +37,3 @@ interface DashboardModel {
   beerContainers: Array<BeerContainer>,
 }
 
-interface BeerContainer { }
