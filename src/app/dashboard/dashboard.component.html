@@ -1,3 +1,54 @@
-<p>
-  dashboard works!
-</p>
+<header class="container">
+  <div class="row">
+    <h2 class="col-sm-9">Beer containers</h2>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">External temperature</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-center" *ngIf="model.externalTemperature">{{model.externalTemperature}}ºC</p>
+          <p class="card-text text-center" *ngIf="!model.externalTemperature">Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          Container Header
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Container title</h5>
+          <p class="card-text">Container text</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          Container Header
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Container title</h5>
+          <p class="card-text">Container text</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">
+          Container Header
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Container title</h5>
+          <p class="card-text">Container text</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

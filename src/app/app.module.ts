@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ExternalTemperatureProviderService } from './services/temperature-provider/external-temperature-provider.service';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [ExternalTemperatureProviderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
