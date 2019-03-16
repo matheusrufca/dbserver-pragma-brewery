@@ -4,6 +4,12 @@ import { BeerContainerTemperatureService } from 'src/app/services/thermometer/be
 import { BeerContainerPreset } from './../../services/beer/beer-container.service';
 import { TemperatureRange } from 'src/app/models/temperature-range';
 
+enum CARD_COLORS {
+  Default = 'bg-dark',
+  Hot = 'bg-danger',
+  Cool = 'bg-info',
+}
+
 @Component({
   selector: 'app-beer-container',
   templateUrl: './beer-container.component.html',
@@ -13,9 +19,11 @@ import { TemperatureRange } from 'src/app/models/temperature-range';
 export class BeerContainerComponent implements OnInit {
   readonly model: BeerContainer;
   readonly containerTemperature: Observable<number>;
+  cardColor: CARD_COLORS;
   @Input() presets: BeerContainerPreset;
 
   constructor(private readonly beerContainerTemperature: BeerContainerTemperatureService) {
+    this.cardColor = CARD_COLORS.Default;
     this.model = {} as BeerContainer;
     this.containerTemperature = this.beerContainerTemperature.getCurrentTemperature();
   }
@@ -39,10 +47,27 @@ export class BeerContainerComponent implements OnInit {
     this.model.temperatureRange = { min: preset.min, max: preset.max };
   }
 
-  private onTemperatureChange(currentTemperature: number): void {
-    this.setTemperature(currentTemperature);
+  private onTemperatureChange(temperature: number): void {
+    this.setTemperature(temperature);
+    this.setCardColor(temperature);
+  }
+
+  private setCardColor(temperature: number): void {
+    let cardColor = CARD_COLORS.Default;
+    if (temperature > this.model.temperatureRange.max) {
+      cardColor = CARD_COLORS.Hot;
+    } else if (temperature < this.model.temperatureRange.min) {
+      cardColor = CARD_COLORS.Cool;
+    }
+    this.cardColor = cardColor;
+  }
+
+  private notifyIssue(currentTemperature: number): void {
+
   }
 }
+
+
 
 export interface BeerContainer {
   temperature: string;

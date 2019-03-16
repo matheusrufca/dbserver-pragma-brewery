@@ -1,10 +1,11 @@
-<div class="card">
+<div class="card" [ngClass]="cardColor">
   <div class="card-body text-center">
     <div *ngIf="model.temperature">
       <app-beer-container-gauge [containerName]="model.info.type"
                                 [temperature]="model.temperature"
                                 [temperatureRange]="model.temperatureRange">
       </app-beer-container-gauge>
-    </div><h5 class="card-title text-center">{{model.info.type}} Container</h5>
+    </div>
+    <h5 class="card-title text-center text-light">{{model.info.type}} Container</h5>
   </div>
 </div>
