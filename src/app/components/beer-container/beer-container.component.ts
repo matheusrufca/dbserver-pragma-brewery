@@ -15,19 +15,18 @@ export class BeerContainerComponent implements OnInit {
   constructor(private readonly beerContainerTemperature: BeerContainerTemperatureService) {
     this.model = {} as BeerContainer;
     this.containerTemperature = this.beerContainerTemperature.getCurrentTemperature();
-
   }
 
   ngOnInit() {
     this.containerTemperature.subscribe(this.onTemperatureChange.bind(this));
   }
 
-  private setExternalTemperature(temperature: number) {
-    this.model.externalTemperature = temperature.toFixed(2);
+  private setTemperature(temperature: number) {
+  this.model.temperature = temperature.toFixed(2);
   }
 
   private onTemperatureChange(currentTemperature: number): void {
-    this.setExternalTemperature(currentTemperature);
+    this.setTemperature(currentTemperature);
     console.debug('DashboardComponent:onExternalTemperatureChange()', currentTemperature);
   }
 }

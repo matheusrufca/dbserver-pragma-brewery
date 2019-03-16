@@ -17,7 +17,8 @@ import { BeerContainerComponent } from './components/beer-container/beer-contain
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxGaugeModule,
   ],
   providers: [ExternalTemperatureProviderService],
   bootstrap: [AppComponent]
