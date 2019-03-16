@@ -1,31 +1,30 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxGaugeModule } from 'ngx-gauge';
+import { ExternalTemperatureService } from 'src/app/services/thermometer/external-temperature.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ExternalTemperatureProviderService } from './services/termometer/external-temperature-provider.service';
+import { BeerContainerGaugeComponent } from './components/beer-container-gauge/beer-container-gauge.component';
 import { BeerContainerComponent } from './components/beer-container/beer-container.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    BeerContainerComponent
+    BeerContainerGaugeComponent,
+    BeerContainerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     NgbModule,
     NgxGaugeModule,
   ],
-  providers: [ExternalTemperatureProviderService],
+  providers: [ExternalTemperatureService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-// deepskyblue	#00BFFF	rgb(0,191,255)
-// yellow	#FFFF00	rgb(255,255,0)
-// lawngreen	#7CFC00	rgb(124,252,0)
-// crimson	#DC143C	rgb(220,20,60)

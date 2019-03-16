@@ -17,40 +17,8 @@
 
 <main class="container">
   <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
-          Container Header
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Container title</h5>
-          <p class="card-text">Container text</p>
-          <app-beer-container></app-beer-container>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
-          Container Header
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Container title</h5>
-          <p class="card-text">Container text</p>
-          <app-beer-container></app-beer-container>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
-          Container Header
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Container title</h5>
-          <p class="card-text">Container text</p>
-        </div>
-      </div>
+    <div class="col col-sm-6 col-md-4" *ngFor="let item of model.beerContainers">
+      <app-beer-container [presets]="item"></app-beer-container>
     </div>
   </div>
 </main>
