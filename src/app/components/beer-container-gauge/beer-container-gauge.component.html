@@ -1,10 +1,9 @@
-<p>
-  beer-container-gauge works!
-</p>
-
 <ngx-gauge [value]="temperature"
            [type]="gaugeSettings.type"
            [min]="gaugeSettings.min"
            [max]="gaugeSettings.max"
-           [append]="gaugeSettings.append">
+           [thresholds]="gaugeSettings.thresholds"
+           [label]="gaugeSettings.label"
+           [append]="gaugeSettings.append"
+           [foregroundColor]="gaugeSettings.foregroundColor">
 </ngx-gauge>

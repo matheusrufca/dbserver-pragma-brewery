@@ -3,9 +3,11 @@ import { TemperatureRange } from './../../models/temperature-range.d';
 
 const DEFAULT_GAUGE_SETTINGS: Partial<GaugeSettings> = Object.freeze({
   type: 'arch',
-  min: -20,
-  max: 80,
+  min: 0,
+  max: 50,
   append: 'ºC',
+  foregroundColor: '#00BFFF',
+  thick: 40,
 }) as Partial<GaugeSettings>;
 
 @Component({
@@ -17,7 +19,7 @@ export class BeerContainerGaugeComponent implements OnInit {
   @Input() temperature: number;
   @Input() containerName: string;
   @Input() temperatureRange: TemperatureRange;
-
+  loading: boolean;
   gaugeSettings: Partial<GaugeSettings>;
 
   constructor() {
@@ -26,24 +28,20 @@ export class BeerContainerGaugeComponent implements OnInit {
 
   ngOnInit() {
     Object.assign(this.gaugeSettings, DEFAULT_GAUGE_SETTINGS, {
-      label: this.containerName,
+      label: `min: ${this.temperatureRange.min}ºC – max: ${this.temperatureRange.max}ºC`,
       thresholds: this.buildThresholdsSettings(this.temperatureRange),
     });
   }
 
   private buildThresholdsSettings(temperatureRange: TemperatureRange): any {
-    const thresholdsKeys = {
-      min: DEFAULT_GAUGE_SETTINGS.min.toFixed(2),
-      cool: temperatureRange.min.toFixed(2),
-      hot: temperatureRange.min.toFixed(2),
-      max: DEFAULT_GAUGE_SETTINGS.max.toFixed(2),
-    };
     const thresholds = {};
+    const thresholdsKeys = {
+      cool: temperatureRange.min.toString(),
+      hot: temperatureRange.max.toString(),
+    };
 
-    thresholds[thresholdsKeys.min] = { color: '#00BFFF' };
-    thresholds[thresholdsKeys.cool] = { color: '#00BFFF' };
-    thresholds[thresholdsKeys.hot] = { color: '#00BFFF' };
-    thresholds[thresholdsKeys.max] = { color: '#00BFFF' };
+    thresholds[thresholdsKeys.cool] = { color: '#009688' };
+    thresholds[thresholdsKeys.hot] = { color: '#DC143C' };
 
     return thresholds;
   }

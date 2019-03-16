@@ -1,16 +1,10 @@
 <div class="card">
-  <div class="card-header">
-    <h5 class="card-title">{{model.info.type}} Container</h5>
-  </div>
-  <div class="card-body">
-    <!-- <h5 class="card-title">Container title</h5> -->
-    <!-- <p class="card-text">Container text</p> -->
-    <h2>{{model.temperature}}ºC</h2>
-    <div *ngIf="model.info">
+  <div class="card-body text-center">
+    <div *ngIf="model.temperature">
       <app-beer-container-gauge [containerName]="model.info.type"
                                 [temperature]="model.temperature"
                                 [temperatureRange]="model.temperatureRange">
       </app-beer-container-gauge>
-    </div>
+    </div><h5 class="card-title text-center">{{model.info.type}} Container</h5>
   </div>
 </div>
