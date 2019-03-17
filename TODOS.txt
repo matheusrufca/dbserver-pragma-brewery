@@ -1,0 +1,4 @@
+TODOS:
+  improve BeerGaugeCOmponentTest to ensure chart is receiving right parameters
+  loader com gauge chart
+  notify errors and temperatures
