@@ -30,18 +30,28 @@ describe('BeerContainerGaugeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      // declarations: [MockComponent(NgxGauge)]
-    })
-      .compileComponents();
+      declarations: [
+        NgxGaugeComponentFake,
+        BeerContainerGaugeComponent
+      ],
+    }).compileComponents();
+
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BeerContainerGaugeComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    component.containerName = 'IPA';
+    component.temperature = 4;
+    component.temperatureRange = { min: 4, max: 7 };
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show GaugeChart', () => {
+    fixture.detectChanges();
+    expect((fixture.nativeElement.querySelector('ngx-gauge') as Element)).toBeTruthy();
   });
 });

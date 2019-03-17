@@ -23,11 +23,11 @@ export class BeerContainerGaugeComponent implements OnInit {
   @Input() temperature: number;
   @Input() containerName: string;
   @Input() temperatureRange: TemperatureRange;
-  loading: boolean;
   gaugeSettings: Partial<GaugeSettings>;
 
   constructor() {
-    this.loading = true;
+    this.containerName = '';
+    this.temperatureRange = { min: 0, max: 0 };
     this.gaugeSettings = Object.assign({}, DEFAULT_GAUGE_SETTINGS);
   }
 
@@ -36,7 +36,6 @@ export class BeerContainerGaugeComponent implements OnInit {
       label: `min: ${this.temperatureRange.min}ºC – max: ${this.temperatureRange.max}ºC`,
       thresholds: this.buildThresholdsSettings(this.temperatureRange),
     });
-    this.loading = false;
   }
 
   private buildThresholdsSettings(temperatureRange: TemperatureRange): any {
