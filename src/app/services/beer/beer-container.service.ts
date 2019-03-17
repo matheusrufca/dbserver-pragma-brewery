@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BeerContainerService {
+  private readonly apiServiceUrl: string = 'assets/data/beer-ideal-temperatures.json';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { }
 
-  getBeerContainersPresets() {
-    return this.http.get('assets/data/beer-ideal-temperatures.json');
+  getPresets(): Observable<BeerContainerPreset[]> {
+    return this.httpClient.get<BeerContainerPreset[]>(this.apiServiceUrl);
   }
 }
 
