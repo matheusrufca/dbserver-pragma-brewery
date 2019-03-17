@@ -27,6 +27,7 @@ export class BeerContainerGaugeComponent implements OnInit {
   gaugeSettings: Partial<GaugeSettings>;
 
   constructor() {
+    this.loading = true;
     this.gaugeSettings = Object.assign({}, DEFAULT_GAUGE_SETTINGS);
   }
 
@@ -35,6 +36,7 @@ export class BeerContainerGaugeComponent implements OnInit {
       label: `min: ${this.temperatureRange.min}ºC – max: ${this.temperatureRange.max}ºC`,
       thresholds: this.buildThresholdsSettings(this.temperatureRange),
     });
+    this.loading = false;
   }
 
   private buildThresholdsSettings(temperatureRange: TemperatureRange): any {
