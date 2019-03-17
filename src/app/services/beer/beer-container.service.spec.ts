@@ -55,7 +55,7 @@ describe('BeerContainerService', () => {
     httpMock.verify();
   });
 
-  it('#constructor', () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
