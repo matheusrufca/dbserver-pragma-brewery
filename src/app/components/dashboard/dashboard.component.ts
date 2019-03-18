@@ -11,33 +11,15 @@ import { BeerContainerPreset } from './../../services/beer/beer-container.servic
 })
 export class DashboardComponent implements OnInit {
   readonly model: DashboardModel;
-  readonly externalTemperature: Observable<number>;
 
-  constructor(
-    private readonly externalTemperatureService: ExternalTemperatureService,
-    private readonly beerContainerService: BeerContainerService
-  ) {
+  constructor(private readonly beerContainerService: BeerContainerService) {
     this.model = {
       beerContainers: [],
     } as DashboardModel;
-
-    // TODO: move to component
-    this.externalTemperature = this.externalTemperatureService.getCurrentTemperature();
   }
 
   ngOnInit() {
     this.loadBeerContainersPresets();
-    this.externalTemperature.subscribe(this.onExternalTemperatureChange.bind(this));
-  }
-
-
-  private setExternalTemperature(temperature: number) {
-    this.model.externalTemperature = temperature.toFixed(1);
-  }
-
-  private onExternalTemperatureChange(currentTemperature: number): void {
-    this.setExternalTemperature(currentTemperature);
-    // console.debug('DashboardComponent:onExternalTemperatureChange()', currentTemperature);
   }
 
   private loadBeerContainersPresets(): void {
@@ -48,7 +30,6 @@ export class DashboardComponent implements OnInit {
   }
 
   private setBeerContainers(presets: BeerContainerPreset[]): void {
-    console.debug('containers', presets);
     this.model.beerContainers = presets;
   }
 
