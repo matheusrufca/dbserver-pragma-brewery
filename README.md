@@ -1,13 +1,12 @@
 # Application
 
-This application monitors the temperature of beer containers and shows it in real time on the application dashboard.
-Each container has a panel, that can be blue, dark or red according to current temperature.
-
+This application monitors the temperature of beer containers and shows it in real time on the application dashboard. Each container has a panel, that can be blue, dark or red according to current temperature.
 Also it notifies the user with a toast message every time a container has passed the limit.
 
 ## Setup
 
 Run `npm install` to install dependencies.
+
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Running unit tests
