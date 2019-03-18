@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TemperatureRange } from 'src/app/models/temperature-range';
 import { BeerContainerTemperatureService } from 'src/app/services/thermometer/beer-container-temperature.service';
 import { BeerContainerPreset } from './../../services/beer/beer-container.service';
-import { TemperatureRange } from 'src/app/models/temperature-range';
 
 enum CARD_COLORS {
   Default = 'bg-dark',
@@ -20,11 +20,17 @@ export class BeerContainerComponent implements OnInit {
   readonly model: BeerContainer;
   readonly containerTemperature: Observable<number>;
   cardColor: CARD_COLORS;
+  @Input() type: string;
   @Input() presets: BeerContainerPreset;
 
   constructor(private readonly beerContainerTemperature: BeerContainerTemperatureService) {
     this.cardColor = CARD_COLORS.Default;
-    this.model = {} as BeerContainer;
+    this.model = {
+      temperature: '',
+      type: '',
+      temperatureRange: { min: 0, max: 0 },
+      info: {}
+    } as BeerContainer;
     this.containerTemperature = this.beerContainerTemperature.getCurrentTemperature();
   }
 
@@ -34,16 +40,14 @@ export class BeerContainerComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     const presets: SimpleChange = changes.presets;
-    this.setInfo(presets.currentValue);
-    console.debug('presets', presets.previousValue, presets.currentValue);
+    this.setTemperatureRange(presets.currentValue);
   }
 
   private setTemperature(temperature: number): void {
-    this.model.temperature = temperature.toFixed(2);
+    this.model.temperature = temperature.toFixed(1);
   }
 
-  private setInfo(preset: BeerContainerPreset): void {
-    this.model.info = preset;
+  private setTemperatureRange(preset: BeerContainerPreset): void {
     this.model.temperatureRange = { min: preset.min, max: preset.max };
   }
 

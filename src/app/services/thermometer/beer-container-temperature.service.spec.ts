@@ -14,7 +14,7 @@ describe('BeerContainerTemperatureService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('getCurrentTemperature()', () => {
+  describe('#getCurrentTemperature', () => {
     const TEMPERATURE_RANGE = Object.freeze({
       min: 2,
       max: 9,

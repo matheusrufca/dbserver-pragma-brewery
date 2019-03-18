@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
 
 
   private setExternalTemperature(temperature: number) {
-    this.model.externalTemperature = temperature.toFixed(2);
+    this.model.externalTemperature = temperature.toFixed(1);
   }
 
   private onExternalTemperatureChange(currentTemperature: number): void {
@@ -41,13 +41,20 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadBeerContainersPresets(): void {
-    this.beerContainerService.getBeerContainersPresets()
-      .subscribe(this.setBeerContainers.bind(this))
+    this.beerContainerService.getPresets().subscribe(
+      this.setBeerContainers.bind(this),
+      this.handleLoadingError.bind(this)
+    );
   }
 
-  private setBeerContainers(presets: BeerContainerPreset[]) {
+  private setBeerContainers(presets: BeerContainerPreset[]): void {
     console.debug('containers', presets);
     this.model.beerContainers = presets;
+  }
+
+  private handleLoadingError(error: any): void {
+    // TODO: notify load error
+    console.error('An error ocurred during dashboard loading', error);
   }
 }
 

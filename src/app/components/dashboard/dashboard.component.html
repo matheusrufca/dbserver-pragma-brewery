@@ -2,7 +2,7 @@
 <main class="container">
   <div class="row">
     <div class="col col-sm-6 col-md-4" *ngFor="let item of model.beerContainers">
-      <app-beer-container [presets]="item"></app-beer-container>
+      <app-beer-container [type]="item.type" [presets]="item"></app-beer-container>
     </div>
   </div>
 </main>
