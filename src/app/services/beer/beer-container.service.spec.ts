@@ -1,6 +1,6 @@
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed, inject, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { BeerContainerService } from './beer-container.service';
 
 const FAKE_BEER_CONTAINERS = Object.freeze([{
