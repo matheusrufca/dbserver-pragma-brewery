@@ -38,10 +38,11 @@ export class BeerContainerTemperatureService {
   }
 
   private setCurrentTemperature(temperature: number): void {
-    if (temperature > TEMPERATURE_RANGE.max)
+    if (temperature > TEMPERATURE_RANGE.max) {
       temperature = TEMPERATURE_RANGE.max;
-    else if (temperature < TEMPERATURE_RANGE.min)
+    } else if (temperature < TEMPERATURE_RANGE.min) {
       temperature = TEMPERATURE_RANGE.min;
+    }
 
     this.currentTemperature = temperature;
   }

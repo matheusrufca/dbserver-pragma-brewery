@@ -7,7 +7,7 @@ const DEFAULT_GAUGE_SETTINGS: Partial<GaugeSettings> = Object.freeze({
   max: 50,
   size: 250,
   append: 'ºC',
-  foregroundColor: '#00008C',
+  foregroundColor: '#009688',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   thick: 7,
   cap: 'round',
