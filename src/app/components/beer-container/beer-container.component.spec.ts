@@ -6,11 +6,10 @@ import { of } from 'rxjs';
 import { BeerContainerTemperatureService } from 'src/app/services/thermometer/beer-container-temperature.service';
 import { BeerContainerGaugeComponent } from '../beer-container-gauge/beer-container-gauge.component';
 import { BeerContainerComponent } from './beer-container.component';
+import { ToastrService } from 'ngx-toastr';
 
-class BeerContainerTemperatureServiceMock {
-  getCurrentTemperature() {
-    return of(0, 4, 5, 7, 8);
-  }
+class ToastrServiceMock {
+  warning(message: string, title: string) { }
 }
 
 describe('BeerContainerComponent', () => {
@@ -32,6 +31,7 @@ describe('BeerContainerComponent', () => {
       ],
       providers: [
         { provide: BeerContainerTemperatureService, useValue: beerContainerTemperatureServiceMock },
+        { provide: ToastrService, useValue: new ToastrServiceMock() },
       ]
     }).compileComponents();
   }));
