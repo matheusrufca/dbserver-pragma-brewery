@@ -1,12 +1,11 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { cold, getTestScheduler } from 'jasmine-marbles';
 import { TestObservable } from 'jasmine-marbles/src/test-observables';
 import { MockComponent } from 'ng-mocks';
-import { of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { BeerContainerTemperatureService } from 'src/app/services/thermometer/beer-container-temperature.service';
 import { BeerContainerGaugeComponent } from '../beer-container-gauge/beer-container-gauge.component';
 import { BeerContainerComponent } from './beer-container.component';
-import { ToastrService } from 'ngx-toastr';
 
 class ToastrServiceMock {
   warning(message: string, title: string) { }
@@ -52,29 +51,29 @@ describe('BeerContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // describe('panel background color', () => {
-  //   let expectedColor;
+  xdescribe('panel background color', () => {
+    let expectedColor;
 
-  //   it('should change panel color when temperature changes', () => {
-  //     getTestScheduler().flush();
-  //     fixture.detectChanges();
-  //     expectedColor = getExpectedColor(parseFloat(component.model.temperature), component.presets.min, component.presets.max);
-  //     expect(component.cardColor).toEqual(expectedColor);
-  //     console.log('temp', component.model.temperature, 'current color', component.cardColor, 'expected color', expectedColor);
+    it('should change panel color when temperature changes', () => {
+      getTestScheduler().flush();
+      fixture.detectChanges();
+      expectedColor = getExpectedColor(parseFloat(component.model.temperature), component.presets.min, component.presets.max);
+      expect(component.cardColor).toEqual(expectedColor);
+      console.log('temp', component.model.temperature, 'current color', component.cardColor, 'expected color', expectedColor);
 
-  //     getTestScheduler().flush();
-  //     fixture.detectChanges();
-  //     expectedColor = getExpectedColor(parseFloat(component.model.temperature), component.presets.min, component.presets.max);
-  //     expect(component.cardColor).toEqual(expectedColor);
-  //     console.log('temp', component.model.temperature, 'current color', component.cardColor, 'expected color', expectedColor);
+      getTestScheduler().flush();
+      fixture.detectChanges();
+      expectedColor = getExpectedColor(parseFloat(component.model.temperature), component.presets.min, component.presets.max);
+      expect(component.cardColor).toEqual(expectedColor);
+      console.log('temp', component.model.temperature, 'current color', component.cardColor, 'expected color', expectedColor);
 
-  //     getTestScheduler().flush();
-  //     fixture.detectChanges();
-  //     expectedColor = getExpectedColor(parseFloat(component.model.temperature), component.presets.min, component.presets.max);
-  //     expect(component.cardColor).toEqual(expectedColor);
-  //     console.log('temp', component.model.temperature, 'current color', component.cardColor, 'expected color', expectedColor);
-  //   });
-  // });
+      getTestScheduler().flush();
+      fixture.detectChanges();
+      expectedColor = getExpectedColor(parseFloat(component.model.temperature), component.presets.min, component.presets.max);
+      expect(component.cardColor).toEqual(expectedColor);
+      console.log('temp', component.model.temperature, 'current color', component.cardColor, 'expected color', expectedColor);
+    });
+  });
 });
 
 

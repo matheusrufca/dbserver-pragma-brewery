@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxGaugeModule } from 'ngx-gauge';
 import { ToastrModule } from 'ngx-toastr';
-import { ExternalTemperatureService } from 'src/app/services/thermometer/external-temperature.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BeerContainerGaugeComponent } from './components/beer-container-gauge/beer-container-gauge.component';
@@ -32,7 +31,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     }),
     NgxGaugeModule,
   ],
-  providers: [ExternalTemperatureService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

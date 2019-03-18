@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { BeerContainerService } from 'src/app/services/beer/beer-container.service';
 import { BeerContainerComponent } from '../beer-container/beer-container.component';
 import { DashboardComponent } from './dashboard.component';
+import { ToastrService } from 'ngx-toastr';
 
 const FAKE_BEER_CONTAINERS = Object.freeze([{
   id: 1,
@@ -16,6 +17,9 @@ const FAKE_BEER_CONTAINERS = Object.freeze([{
   min: 5,
   max: 6
 }]);
+class ToastrServiceMock {
+  error(message: string, title: string) { }
+}
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -34,6 +38,7 @@ describe('DashboardComponent', () => {
       ],
       providers: [
         { provide: BeerContainerService, useValue: beerContainerServiceMock },
+        { provide: ToastrService, useValue: new ToastrServiceMock() }
       ]
     }).compileComponents();
   }));

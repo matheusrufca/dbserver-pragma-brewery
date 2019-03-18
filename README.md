@@ -1,27 +1,39 @@
-# DbserverPragmaBrewery
+# Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+This application monitors the temperature of beer containers and shows it in real time on the application dashboard.
+Each container has a panel, that can be blue, dark or red according to current temperature. Also it notifies the user with a toast message every time a container has passed the limit.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm install` to install dependencies.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## What are the highlights of your logic/code writing style?
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+I make use of Typescript features to create a typesafe application, and small methods to improve readability.
+The gauge chart is a friendly way to show temperature.
+The temperature observables goes pretty well to watch temperature changes.
 
-## Further help
+## What could have been done in a better way? What would you do in version 2.0?
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Sound notification so Shane could be aware of heating problems while he is driving
+Log temperatures on a database
+Hide/Show/Mute container panel
+Show heating details like if there is a door open
+Add a spinner on page components that take a while to load
+There is some cleanups to do on BeerContainerComponent class properties
+Integration tests
+
+## What were the questions you would ask and your own answers/assumptions?
+
+- To keep it simple, I assume that there is a service to provide temperatures but does not provide more information about some possible heat or cooling problem.
+
+- I assume that there is a service to provide container definitions.
+
+- It probably should be used on a mobile device, tablet or smartphone.
+
+- I would ask if notification via toastr is necessary as the panel color do the same function

@@ -4,7 +4,7 @@ import { TemperatureRange } from './../../models/temperature-range.d';
 const DEFAULT_GAUGE_SETTINGS: Partial<GaugeSettings> = Object.freeze({
   type: 'arch',
   min: 0,
-  max: 50,
+  max: 12,
   size: 250,
   append: 'ºC',
   foregroundColor: '#009688',

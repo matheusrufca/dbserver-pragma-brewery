@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { BeerContainerService } from 'src/app/services/beer/beer-container.service';
-import { ExternalTemperatureService } from 'src/app/services/thermometer/external-temperature.service';
 import { BeerContainerPreset } from './../../services/beer/beer-container.service';
 
 @Component({
@@ -12,7 +11,10 @@ import { BeerContainerPreset } from './../../services/beer/beer-container.servic
 export class DashboardComponent implements OnInit {
   readonly model: DashboardModel;
 
-  constructor(private readonly beerContainerService: BeerContainerService) {
+  constructor(
+    private readonly toastr: ToastrService,
+    private readonly beerContainerService: BeerContainerService
+  ) {
     this.model = {
       beerContainers: [],
     } as DashboardModel;
@@ -33,9 +35,8 @@ export class DashboardComponent implements OnInit {
     this.model.beerContainers = presets;
   }
 
-  private handleLoadingError(error: any): void {
-    // TODO: notify load error
-    console.error('An error ocurred during dashboard loading', error);
+  private handleLoadingError(error: Error): void {
+    this.toastr.error(error.message);
   }
 }
 
